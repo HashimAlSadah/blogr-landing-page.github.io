@@ -1,0 +1,90 @@
+@use "./var";
+@use "./mixin";
+
+.footer{
+    padding-top: 4em;
+    margin-top: 4em;
+    background-color: var.$very-dark-black-blue__footer-background;
+    color: white;
+    text-align: center;
+    border-top-right-radius: 100px;
+}
+
+.footer__logo{
+    max-width: 100px;
+    margin: 0 auto;
+}
+
+.footer__menu{
+    margin-top: 3em;
+}
+
+.footer__menu p{
+    margin-bottom: 1.5em;
+}
+
+.footer__menu li + li{
+    margin-top: 0.5em;
+}
+
+.footer__menu > div + div {
+    margin-top: 3em;
+}
+
+.footer__menu a{
+    position: relative;
+    font-family: var.$body-font-family;
+    color: var.$grayish-blue__footer-text;
+}
+
+.attribution{
+    margin-top: 4em;
+}
+
+@include mixin.screenMinWidStyle(var.$first-break-point){
+
+    .footer{
+        padding: 4em 4em 0;
+        text-align: left;
+    }
+    .footer__row{
+        display: flex;
+        justify-content: space-between;
+        gap: 15%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer__logo{
+        margin: unset;
+    }
+
+    .footer__menu{
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+        gap: 4em;
+        max-width: 600px;
+        margin-top: 0;
+        margin-right: auto;
+    }
+
+    .footer__menu a::after{
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        left: 0;
+        bottom: 0;
+        background-color: var.$grayish-blue__footer-text;
+        transition: width 0.4s ease;
+    }
+
+    .footer__menu a:hover::after{
+        width: 100%;
+    }
+
+    .footer__menu > div + div {
+        margin-top: 0em;
+    }
+}

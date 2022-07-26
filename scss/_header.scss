@@ -1,0 +1,54 @@
+@use "./var";
+@use "./mixin";
+
+.header{
+    position: relative;
+    background-image: url("../images/bg-pattern-intro-mobile.svg"), var.$background-gradient-mobile-nav;
+    background-position: center;
+    background-repeat: no repeat;
+    color: var.$white__text;
+    padding: 2em 1.5em 8em;
+    border-bottom-left-radius: 100px;
+    text-align: center;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo{
+    max-width: 90px;
+}
+
+.CTA{
+    padding: 0 0.85em;
+}
+
+.CTA__title{
+    font-size: clamp(2.0rem, 4vw, 6rem);
+    margin-top: 3em;
+}   
+
+.CTA__body{
+    font-family: var.$heading-font-family;
+    font-size: 1.05rem;
+    margin-top: 0.75em;
+    margin-bottom: 3em;
+}
+
+@include mixin.screenMinWidStyle(var.$first-break-point){
+    .header{
+        padding: 3em 5em 8em;
+        background-image: url("../images/bg-pattern-intro-desktop.svg"), var.$background-gradient-desktop-nav;
+        background-repeat: no-repeat;
+        background-size: 200%, cover;
+        background-position: 30% 50%, 0 0;
+    }
+
+    .nav{
+        gap: 3em;
+    }
+}
+

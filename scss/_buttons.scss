@@ -1,0 +1,41 @@
+@use "./var";
+@use "./mixin";
+
+.CTA__links{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75em;
+}
+
+.start-btn, .learn-more-btn{
+    display: block;
+    max-width: 220px;
+    color: inherit;
+    font-family: var.$body-font-family;
+    font-weight: 500;
+    border: 1px solid white;
+    padding: 0.7em 1.35em;
+    border-radius: 30px; 
+    transition: all 0.4s ease;
+}
+
+.start-btn{
+    background-color: white;
+    color: var.$button-orange-font;
+    border: none;
+}
+
+@include mixin.screenMinWidStyle(var.$first-break-point){
+    .start-btn:hover{
+        background-color: var.$button-hover-background-color;
+        color: white;
+    }
+
+    .learn-more-btn:hover{
+        background-color: white;
+        color: var.$button-orange-font;
+    }
+}
+

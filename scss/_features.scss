@@ -1,0 +1,64 @@
+@use "./var";
+@use "./mixin";
+
+.features{
+    margin-top: 3em;
+}
+
+.features__text{
+    padding: 0 1.75em;
+}
+
+
+.features h2{
+    font-size: 1.6rem;
+    color: var.$heading-color;
+    margin-top: 1.5em;
+}
+
+.features p{
+    color: var.$very-dark-grayish-blue__body-copy;
+    margin-top: 0.75em;
+    line-height: 1.8;
+}
+
+@include mixin.screenMinWidStyle(var.$first-break-point){
+    .features{
+        display: flex;
+        align-items: center;
+        margin-top: 10em;
+        margin-bottom: 8em;
+    }
+
+    .features h2{
+        font-size: clamp(1.7rem, 3vw, 2rem);
+    }
+
+    .features__image{
+        position: relative;
+        flex: 1 1 60%;
+        left: -24.5%;
+        margin-right: -24.5%;
+        max-width: 1200px;
+    }
+
+    .features__text{
+        flex: 1 1 40%;
+        padding-left: 0;
+        max-width: 520px;
+    }
+}
+
+@include mixin.screenMinWidStyle(var.$large-screen-break-point){
+    .features{
+        justify-content: center;
+        gap: 3em;
+        padding: 0 8em;
+    }
+
+    .features__image{
+        position: static;
+        max-width: 1000px;
+        margin-right: unset;
+    }
+}

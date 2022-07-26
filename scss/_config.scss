@@ -1,0 +1,56 @@
+@use "./var";
+@use "./mixin";
+
+*, *::before, *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.desktop{
+    display: none;
+}
+
+h1, h2, h3{
+    font-family: var.$heading-font-family;
+}
+
+p{
+    font-family: var.$body-font-family;
+}
+
+img{
+    display: block;
+    width: 100%;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.main{
+    text-align: center;
+}
+
+@include mixin.screenMinWidStyle(var.$first-break-point){
+    .mobile{
+        display: none;
+    }
+
+    .desktop{
+        display: unset;
+    }
+
+    .main{
+        text-align: left;
+    }
+}
+

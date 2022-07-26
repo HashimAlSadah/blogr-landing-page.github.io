@@ -1,0 +1,138 @@
+@use "./var";
+@use "./mixin";
+
+.intro{
+    margin: 5em auto;
+    padding: 0 1em;
+    max-width: 1350px;
+}
+
+.intro h1, .intro h2{
+    color: var.$heading-color;
+}
+
+.intro h1{
+    font-size: clamp(1.7rem, 5vw, 2rem);
+    margin-bottom: 1.5em;
+}
+
+.intro h2{
+    font-size: 1.6rem;
+    margin: 1.5em auto 0;
+    max-width: 200px;
+}
+
+.intro__image{
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.intro .articles{
+    padding: 0 1em;
+}
+
+.intro p{
+    color: var.$very-dark-grayish-blue__body-copy;
+    line-height: 1.8;
+    margin-top: 0.5em;
+}
+
+@include mixin.screenMinWidStyle(var.$first-break-point){
+    
+    .intro{
+        margin-top: 8em;
+        margin-bottom: 10em;
+    }
+
+    .intro .images-articles-wraper{
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .intro h1{
+        font-size: clamp(2rem, 3vw, 3.7rem);
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    .images-articles-wraper .intro__image{
+        position: relative;
+        max-width: unset;
+        top: -2em;
+        left: 11.5em;
+        margin-left: -11.5em;
+        flex: 1 1 54%;
+    }
+
+    .images-articles-wraper .articles{
+        flex: 1 1 46%;
+    }
+
+    .intro h1{
+        text-align: center;
+    }
+
+    .intro h2{
+        max-width: unset;
+    }
+}
+
+@include mixin.screenMinWidStyle(var.$second-break-point-intro){
+
+    .intro{
+        margin-bottom: 5em;
+    }
+
+    .images-articles-wraper .intro__image{
+        max-width: unset;
+        margin: unset;
+        top: -6em;
+        left: 15.5em;
+        margin-left: -15.5em;
+    }
+
+    .images-articles-wraper .articles{
+        margin-top: 3em;
+    }
+
+}
+
+@include mixin.screenMinWidStyle(var.$third-break-point-intro){
+
+    .intro{
+        margin-bottom: 0em;
+    }
+
+    .intro h2{
+        font-size: 2rem;
+    }
+
+    .images-articles-wraper .intro__image{
+        
+        top: -6em;
+        left: 20.5em;
+        margin-left: -20.5em;
+    }
+
+    .images-articles-wraper .articles{
+        max-width: 740px;
+        margin-top: 6em;
+    }
+}
+
+@include mixin.screenMinWidStyle(var.$large-screen-break-point){
+
+    .intro .images-articles-wraper{
+        justify-content: center;
+        gap: 3em;
+        margin: 2em 0 8em;
+    }
+
+    .images-articles-wraper .intro__image{
+        position: static;
+        margin-left: unset;
+    }
+}
+
+
+

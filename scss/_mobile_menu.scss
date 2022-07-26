@@ -1,0 +1,224 @@
+@use "./var";
+@use "./mixin";
+
+.header__menu{
+    position: absolute;
+    width: 80.0%;
+    left: 50%;
+    top: 6em;
+    padding: 1.5em 0;
+    border-radius: 4px;
+    background-color: white;
+    z-index: 10;
+    box-shadow: 0 20px 20px 0px rgba(rgb(0, 0, 0), 0.5);
+    transform: translate(-50%, -200%);
+    transition: transform 0.7s ease 50ms;
+}
+
+.header__menu.active{
+    transform: translate(-50%, 0);
+}
+
+.menu-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    margin: 0 auto;
+    width: max-content;
+    cursor: pointer;
+}
+
+.menu-header > *{
+    pointer-events: none;
+}
+
+.menu-header p{
+    position: relative;
+    color: hsl(237, 49%, 29%);
+    font-weight: 500;
+    width: max-content;
+}
+
+.menu-header img{
+    max-width: 10px;
+    margin-top: 2.5px;
+    transition: transform 0.4s ease;
+}
+
+.menu-header.active img{
+    transform: rotate(180deg);
+}
+
+.header__menu ul{
+    width: 85%;
+    height: 0;
+    margin: 0.75em auto;
+    background-color: rgba(var.$grayish-blue__footer-text, 0.3);
+    border-radius: 4px;
+    overflow-y: hidden;
+}
+
+.header__menu ul.active{
+    height: 100%;
+    padding: 1em 0;
+    margin: 1em auto;
+    overflow-y: visible;
+}
+
+.header__menu li + li{
+    margin-top: 1em;
+}
+
+
+.header__menu a{
+    font-family: var.$heading-font-family;
+    font-weight: 400;
+    color: rgba(95, 114, 137, 1);
+}
+
+.hamburger{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.hamburger span{
+    display: block;
+    width: 100%;
+    height: 2.5px;
+    border-radius: 8px;
+    background-color: white;
+    transition: all 0.7s ease 30ms;
+}
+
+.hamburger.active span:first-child{
+    transform: rotate(45deg) translate(13.5px) ;
+}
+
+.hamburger.active span:last-child{
+    transform: rotate(-45deg) translate(13.5px);
+}
+
+.hamburger.active span:nth-child(2){
+    opacity: 0;
+}
+
+.header hr{
+    width: 85%;
+    border: none;
+    border-top: 1.5px solid rgb(220, 216, 216);
+    margin: 0 auto 1.5em;
+
+}
+
+.header__menu .authorization a{
+    display: block;
+    font-weight: 700;
+}
+
+.header__menu .authorization .login{
+    color: hsl(237, 49%, 29%);
+}
+
+.header__menu .authorization .sign-up{
+    width: max-content;
+    margin: 1em auto 0;
+    padding: 0.65em 1.75em 0.5em;
+    border-radius: 30px;
+    color: white;
+    background-image: linear-gradient(to right,  hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+}
+
+@include mixin.screenMinWidStyle(var.$first-break-point){
+    .header__menu{
+        position: unset;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        width: unset;
+        background-color: transparent;
+        transform: translate(0);
+        box-shadow: unset;
+        padding: unset
+    }
+
+    .header__menu.active{
+        transform: translate(0);
+    }
+
+    .header__menu > div + div{
+        margin-left: 1.5em;
+    }
+
+    .hamburger{
+        display: none;
+    }
+
+    .menu-header p{
+        color: white;
+    }
+
+    .menu-header p::after{
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 0;
+        left: 0;
+        bottom: 0;
+        background-color: white;
+        transition: width 0.4s ease;
+    }
+
+    .menu-header.active p::after{
+        width: 100%;
+    }
+    
+
+    .menu-header img{
+        filter: brightness(0) invert(1);
+    }
+
+    .header__menu ul{
+        position: absolute;
+        width: max-content;
+        text-align: left;
+        margin: unset;
+        background-color: white;
+    }
+
+    .header__menu ul.active{
+        height: unset;
+        padding: 1em;
+        padding-right: 2em;
+    }
+
+    .header__menu .authorization{
+        display: flex;
+        align-items: center;
+        gap: 1.5em;
+        margin-left: auto;
+        
+    }
+
+    .header__menu .authorization .login{
+        color: white;
+    }
+
+    .header__menu .authorization .sign-up{
+        background-image: none;
+        background-color: white;
+        color: var.$button-orange-font;
+        margin: unset;
+        transition: all 0.4s ease;
+    }
+
+    .header__menu .authorization .sign-up:hover{
+        background-color: var.$button-hover-background-color;
+        color: white;
+    }
+
+}
